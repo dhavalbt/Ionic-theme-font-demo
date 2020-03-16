@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeServiceService } from 'src/services/theme-service.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  items: Array<number>;
+  constructor(public themeService: ThemeServiceService) {
+    this.items = this.themeService.font;
+  }
 
+  onHandleFontSize(size) {
+    this.themeService.setFontBySize(size);
+  }
 }
